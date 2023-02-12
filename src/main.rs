@@ -9,26 +9,23 @@ fn main() {
 	.about("Rust echo implementation")
 	.arg(
 	     Arg::with_name("text")
-	          .value_name("TEXT")
-		  .help("Input text")
-		  .required(true)
-		  .min_values(1),
+             .value_name("TEXT")
+		    .help("Input text")
+		    .required(true)
+		    .min_values(1),
     	)
 	.arg(
 	    Arg::with_name("omit_newline")
-		.help("Does not print newline")
-		.takes_value(false)
-		.short("n"),
+		    .help("Does not print newline")
+		    .takes_value(false)
+		    .short("n"),
 	)
 	.get_matches();
 
-    	let text = matches.values_of_lossy("text").unwrap();
+    let text = matches.values_of_lossy("text").unwrap();
 	let omit_newline = matches.is_present("omit_newline");
 	
 	let mut ending = if omit_newline {""} else {"\n"};
 
-	println!("{}{}", text.join(" "), ending);
-
-	    
-   println!("{:#?}", matches);
+	print!("{}{}", text.join(" "), ending);
 }
